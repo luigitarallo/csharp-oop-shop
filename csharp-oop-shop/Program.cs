@@ -20,7 +20,7 @@
         private static int GeneraCodice()
         {
             Random ran = new Random();
-            return ran.Next(1000, 10000);
+            return ran.Next(1, 10000000);
         }
         public double CalcolaPrezzoBase()
         {
@@ -38,6 +38,15 @@
         }
 
 
+        /*-------------------------------------
+        Metodo per aggiungere il pad a sinistra
+        --------------------------------------*/
+        public string CodicePadLeft()
+        {
+            return Codice.ToString().PadLeft(8, '0' );
+        }
+
+
     }
     internal class Program
     {
@@ -52,6 +61,7 @@
             Console.WriteLine($"L'IVA sul prodotto è {prodotto1.IVA}%");
             Console.WriteLine($"Il prodotto con prezzo ivato è {prodotto1.CalcolaPrezzoConIVA()} euro");
             Console.WriteLine($"Nome esteso: {prodotto1.NomeEsteso()}");
+            Console.WriteLine($"Codice con padding: {prodotto1.CodicePadLeft()}");
 
             prodotto1.Nome = "Novel Poor Things";
             prodotto1.Prezzo = 10;
